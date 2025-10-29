@@ -1,214 +1,214 @@
+# ✅ **Lab Module 5 — Stratégies avancées (avec utilisation obligatoire de `copilot-instruction.md`)**
 
+> Pour chaque exercice :
+> **Vous devez utiliser le fichier `copilot-instruction.md` comme protocole de travail.**
+>
+> Cela signifie que, AVANT que Copilot modifie un fichier, vous devez lui demander :
+>
+> ✅ de produire un **plan de modification**
+> ✅ d’annoncer le **nombre de modifications**
+> ✅ de n’appliquer qu’**une modification à la fois** en attendant votre validation
+> ✅ d’expliquer ce qu’il change et pourquoi
 
-# **Lab Module 5 – Stratégies avancées**
+Exemple de prompt à utiliser systématiquement :
+
+> « Suis strictement les directives du fichier `copilot-instruction.md`.
+> Propose un plan détaillé des modifications, puis exécute **uniquement la modification n°1** et attends ma confirmation. »
+
+> **Aucune modification ne doit être faite par Copilot sans plan préalable.**
+>
+> → C’est l’application systématique du fichier `copilot-instruction.md`.
 
 ---
-
 ## **Exercice 1 : Comprendre le contexte multi-fichiers**
 
-**Description**  
- Montrer que Copilot utilise imports \+ fichiers du workspace (`main.py`, `config.py`, `utils/parser.py`) pour générer du code cohérent.
+**Description**
+Démontrer que Copilot utilise le contexte du workspace (`main.py`, `config.py`, `utils/parser.py`) pour générer du code cohérent.
 
 **Instructions**
 
-* Ouvrez le projet `Exercices`.
-
-* Dans `main.py`, écrivez seulement :
+1. Ouvrir `main.py`.
+2. Écrire uniquement :
 
 ```py
 # Charger API_URL/TIMEOUT depuis config,
 # appeler une API fictive et afficher parse_response(...)
 ```
 
-* Laissez **Copilot (complétion)** proposer les imports et le squelette.
+3. Dans Copilot :
 
-* Finalisez via **chat** si nécessaire (ex. gestion d’erreurs réseau avec `requests`).
+   > « Selon `copilot-instruction.md`, propose un plan détaillé avant de générer du code. »
+
+4. Valider les modifications **une par une**.
 
 **Critères de réussite**
 
-* `main.py` importe bien `config` et `utils.parser`.
+* `main.py` importe `config` et `utils.parser`.
+* Le script tourne (mock API accepté).
+* Copilot a suivi le protocole **plan → modification séquentielle**.
 
-* Le script s’exécute (API simulée ou mock simple).
+---
 
-* Les propositions Copilot sont cohérentes avec les autres fichiers.
+## **Exercice 2 : Ajouter une fonctionnalité transverse (multi-fichiers)**
 
-  ---
-
-  ## **Exercice 2 : Ajouter une fonctionnalité transverse (multi-fichiers)**
-
-**Description**  
- Implémenter une **journalisation commune** utilisée par plusieurs modules.
+**Description**
+Créer un logger commun utilisé par plusieurs fichiers.
 
 **Instructions**
 
-* Complétez `logging_utils.py` avec seulement :
+1. Créer / ouvrir `logging_utils.py` et mettre uniquement :
 
 ```py
 # Fournir get_logger(name) configuré en JSON (stdout, niveau INFO par défaut)
 ```
 
-* Laissez Copilot écrire `get_logger`.
+2. Dans Copilot :
 
-* Modifiez `main.py` et `utils/parser.py` pour utiliser `get_logger`.
+   > « Suis `copilot-instruction.md`. Propose un plan, puis génère `get_logger`. »
 
-* Demandez au chat : « Quels fichiers dois-je modifier pour appliquer ce logger ? »
+3. Modifier `main.py` et `utils/parser.py` **via Copilot**, en lui demandant :
+
+   > « Quels fichiers dois-je modifier selon ton plan ? Fais uniquement la modification n°1. »
 
 **Critères de réussite**
 
 * Logs JSON uniformes.
+* Pas de duplication de config.
+* Imports corrects.
 
-* Pas de duplication de config logging.
+---
 
-* Import correct depuis plusieurs fichiers.
+## **Exercice 3 : Explication & review de code par Copilot**
 
-  ---
-
-  ## **Exercice 3 : Explication & review de code par Copilot**
-
-**Description**  
- Obtenir une **explication synthétique** et des **améliorations** sur le projet fourni.
+**Description**
+Faire analyser le projet et obtenir des suggestions d’amélioration.
 
 **Instructions**
 
-* Dans le chat, à la racine du workspace :
+Dans le chat, à la racine :
 
-  * « Explique l’architecture du projet en 5 points. »
-
-  * « Identifie 3 améliorations rapides. »
-
-  * « Propose un petit refactor sans changer le comportement. »
-
-* Appliquez 1–2 suggestions proposées.
+* « Explique l’architecture du projet en 5 points. »
+* « Suis `copilot-instruction.md`. Propose un plan de refactor léger. »
+* « Applique uniquement la modification n°1 du plan. »
 
 **Critères de réussite**
 
-* Explication correcte et concise.
-
+* Explication courte.
 * ≥ 2 améliorations intégrées.
+* Diffs clairs.
 
-* Diffs propres et compréhensibles.
+---
 
-  ---
+## **Exercice 4 : Dépendances & contrat inter-modules**
 
-  ## **Exercice 4 : Dépendances & contrat inter-modules**
-
-**Description**  
- Rendre explicites les **contrats** entre fichiers (types, retours) et vérifier via tests.
+**Description**
+Rendre explicite le contrat entre fichiers via docstrings + tests.
 
 **Instructions**
 
-* Ajoutez des **docstrings** dans `utils/parser.py`.
+1. Ajouter des docstrings dans `utils/parser.py`.
 
-* Demandez à Copilot : « Génère `tests/test_parser.py` avec pytest » (cas normal, clé manquante, dict vide).
+2. Dans Copilot :
 
-* Dans le chat : « Liste les fonctions publiques et leurs pré/post-conditions. »
+   > « Suis `copilot-instruction.md`. Génère `tests/test_parser.py` avec pytest. »
+
+3. Demander :
+
+   > « Liste les fonctions publiques + pré/post-conditions. »
 
 **Critères de réussite**
 
-* Docstrings claires.
-
+* Docstrings présentes.
 * ≥ 3 tests verts.
+* Contrats explicites.
 
-* Contrats inter-modules explicités.
+---
 
-  ---
+## **Exercice 5 : Hallucination buster**
 
-  ## **Exercice 5 : Hallucination buster**
-
-**Description**  
- Détecter quand Copilot invente un import ou une fonction inexistante.
+**Description**
+Détecter et corriger une invention de fonction/import par Copilot.
 
 **Instructions**
 
-* Dans `main.py`, ajoutez un commentaire vague :  
-   `# Exporter les résultats en CSV compressé`
+1. Dans `main.py`, ajouter :
 
-* Si Copilot propose `from utils.csv_export import to_csv_gzip`, demandez-lui :  
-   « Cette fonction n’existe pas. Crée le fichier et la fonction minimale avec tests. »
+```py
+# Exporter les résultats en CSV compressé
+```
 
-* Créez `utils/csv_export.py` avec la fonction réelle et un test simple.
+2. Si Copilot invente un fichier inexistant :
+
+> « Cette fonction n’existe pas. Suis `copilot-instruction.md`.
+> Crée le fichier et la fonction minimale + tests. »
 
 **Critères de réussite**
 
 * Pas de références fantômes.
+* Import valide.
+* Test OK.
 
-* Fonction créée et testée.
+---
 
-* Import valide dans `main.py`.
+## **Exercice 6 : Vigilance sécurité**
 
-  ---
-
-  ## **Exercice 6 : Vigilance sécurité**
-
-**Description**  
- Analyser et corriger du code risqué dans `danger.py`.
+**Description**
+Détecter du code dangereux et le corriger.
 
 **Instructions**
 
-* Ouvrez `danger.py` (déjà présent dans le bundle).
+1. Ouvrir `danger.py`.
 
-* Dans le chat : « Analyse les risques sécurité et propose une correction. »
+2. Dans Copilot :
 
-* Appliquez les correctifs :
+   > « Analyse les risques et propose un plan d’amélioration selon `copilot-instruction.md`. »
 
-  * Supprimer `shell=True`.
-
-  * Remplacer API\_KEY codée en dur par une variable obligatoire.
-
-  * Ajouter des logs sécurisés.
+3. Valider modifications une par une.
 
 **Critères de réussite**
 
-* Recommandations pertinentes et appliquées.
+* Suppression des pratiques dangereuses (`shell=True`, secrets en clair).
+* Logs de sécurité ajoutés.
 
-* Patterns dangereux supprimés.
+---
 
-* Commentaire clair expliquant le risque.
+## **Exercice 7 : Migration/refactor multi-fichiers**
 
-  ---
-
-  ## **Exercice 7 : Migration/refactor multi-fichiers**
-
-**Description**  
- Renommer un module et adapter tous les imports avec Copilot.
+**Description**
+Renommer un fichier et modifier tous les imports.
 
 **Instructions**
 
-* Renommez `utils/parser.py` en `utils/response_parser.py`.
+1. Renommer manuellement :
 
-* Dans le chat : « Mets à jour tous les imports et liste les fichiers impactés. »
+   ```
+   utils/parser.py → utils/response_parser.py
+   ```
+2. Dans Copilot :
 
-* Validez les diffs proposés (multi-fichiers).
+   > « Selon `copilot-instruction.md`, mets à jour tous les imports et liste les fichiers impactés. Applique uniquement la modification n°1. »
 
 **Critères de réussite**
 
-* Aucune `ImportError`.
+* Aucun `ImportError`.
+* Tests fonctionnels.
 
-* Tests verts.
+---
 
-* Commit clair.
+## **Exercice 8 : Revue finale du workspace**
 
-  ---
-
-  ## **Exercice 8 : Revue finale du workspace**
-
-**Description**  
- Utiliser Copilot pour une **checklist de fin** : lisibilité, logs, erreurs, tests, sécurité.
+**Description**
+Faire une **checklist qualité** : lisibilité, logs, tests, sécurité.
 
 **Instructions**
 
-* Dans le chat (racine) :
+Dans le chat, à la racine :
 
-  * « Fais une revue globale : points faibles, dette technique, quick wins. »
-
-  * « Propose un plan d’actions priorisé en 5 items. »
-
-* Implémentez 1–2 quick wins rapides (factorisation, test manquant).
+> « Fais une revue globale du projet selon `copilot-instruction.md`. Propose un plan d’amélioration en 5 points. Applique uniquement le point n°1. »
 
 **Critères de réussite**
 
-* Plan concret et priorisé.
-
+* Plan priorisé.
 * ≥ 2 quick wins appliqués.
+* Projet stable & propre.
 
-* Projet exécutable et tests verts.
