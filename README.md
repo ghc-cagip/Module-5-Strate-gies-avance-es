@@ -1,14 +1,14 @@
-# ✅ **Lab Module 5 — Stratégies avancées (avec utilisation obligatoire de `copilot-instruction.md`)**
+# **Lab Module 5 — Stratégies avancées (avec utilisation obligatoire de `copilot-instruction.md`)**
 
 > Pour chaque exercice :
 > **Vous devez utiliser le fichier `copilot-instruction.md` comme protocole de travail.**
 >
 > Cela signifie que, AVANT que Copilot modifie un fichier, vous devez lui demander :
 >
-> ✅ de produire un **plan de modification**
-> ✅ d’annoncer le **nombre de modifications**
-> ✅ de n’appliquer qu’**une modification à la fois** en attendant votre validation
-> ✅ d’expliquer ce qu’il change et pourquoi
+> de produire un **plan de modification**
+> d’annoncer le **nombre de modifications**
+> de n’appliquer qu’**une modification à la fois** en attendant votre validation
+> d’expliquer ce qu’il change et pourquoi
 
 Exemple de prompt à utiliser systématiquement :
 
