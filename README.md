@@ -37,7 +37,7 @@ Démontrer que Copilot utilise le contexte du workspace (`main.py`, `config.py`,
 
 3. Dans Copilot :
 
-   > « Selon `copilot-instruction.md`, propose un plan détaillé avant de générer du code. »
+   > « Selon `copilot-instruction.md`, propose un plan détaillé avant de <à compter> »
 
 4. Valider les modifications **une par une**.
 
@@ -64,11 +64,11 @@ Créer un logger commun utilisé par plusieurs fichiers.
 
 2. Dans Copilot :
 
-   > « Suis `copilot-instruction.md`. Propose un plan, puis génère `get_logger`. »
+   > « Suis `copilot-instruction.md`. Propose un plan, puis <à compter> »
 
 3. Modifier `main.py` et `utils/parser.py` **via Copilot**, en lui demandant :
 
-   > « Quels fichiers dois-je modifier selon ton plan ? Fais uniquement la modification n°1. »
+   > «<à compter>. »
 
 **Critères de réussite**
 
@@ -137,11 +137,6 @@ Détecter et corriger une invention de fonction/import par Copilot.
 # Exporter les résultats en CSV compressé
 ```
 
-2. Si Copilot invente un fichier inexistant :
-
-> « Cette fonction n’existe pas. Suis `copilot-instruction.md`.
-> Crée le fichier et la fonction minimale + tests. »
-
 **Critères de réussite**
 
 * Pas de références fantômes.
@@ -186,7 +181,7 @@ Renommer un fichier et modifier tous les imports.
    ```
 2. Dans Copilot :
 
-   > « Selon `copilot-instruction.md`, mets à jour tous les imports et liste les fichiers impactés. Applique uniquement la modification n°1. »
+   > « Selon `copilot-instruction.md`, <à compter> »
 
 **Critères de réussite**
 
@@ -204,7 +199,7 @@ Faire une **checklist qualité** : lisibilité, logs, tests, sécurité.
 
 Dans le chat, à la racine :
 
-> « Fais une revue globale du projet selon `copilot-instruction.md`. Propose un plan d’amélioration en 5 points. Applique uniquement le point n°1. »
+> «<à compter> »
 
 **Critères de réussite**
 
