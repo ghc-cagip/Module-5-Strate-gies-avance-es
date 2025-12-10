@@ -167,12 +167,6 @@ Renommer manuellement :
 
 **Description**
 Faire une **checklist qualité** : lisibilité, logs, tests, sécurité.
-Modifier le projet pour avoir un système de monitoring incluant :
-
-🔍 Métriques système : CPU, mémoire, disque
-🌐 Monitoring API : Vérification endpoints HTTP avec temps de réponse
-📊 Analyse des seuils : Alertes automatiques
-📝 Rapports unifiés : Métriques système + API
 
 **Instructions**
 
@@ -180,13 +174,7 @@ Modifier le projet pour avoir un système de monitoring incluant :
 
 **Critères de réussite**
 
-
-
-* config.py : Configuration des seuils de monitoring (CPU, RAM, disk)
-* main.py : Orchestrateur principal du monitoring
-* response_parser.py : Parse les métriques système
-* danger.py : Exécute des commandes système sécurisées
-* logging_utils.py : Logs de monitoring
-* export.py : Export des rapports
-* tests/ : Tests de validation
+* Plan priorisé.
+* ≥ 2 quick wins appliqués.
+* Projet stable & propre.
 
