@@ -167,12 +167,19 @@ Renommer manuellement :
 
 **Description**
 Faire une **checklist qualité** : lisibilité, logs, tests, sécurité.
+Modifier le projet pour avoir un système de monitoring incluant :
+
+🔍 Métriques système : CPU, mémoire, disque
+🌐 Monitoring API : Vérification endpoints HTTP avec temps de réponse
+📊 Analyse des seuils : Alertes automatiques
+📝 Rapports unifiés : Métriques système + API
 
 **Instructions**
 
  «<à compter> »
 
 **Critères de réussite**
+
 
 
 * config.py : Configuration des seuils de monitoring (CPU, RAM, disk)
