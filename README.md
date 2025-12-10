@@ -56,19 +56,7 @@ Créer un logger commun utilisé par plusieurs fichiers.
 
 **Instructions**
 
-1. Créer / ouvrir `logging_utils.py` et mettre uniquement :
-
-```py
-# Fournir get_logger(name) configuré en JSON (stdout, niveau INFO par défaut)
-```
-
-2. Dans Copilot :
-
-   > « Suis `copilot-instruction.md`. Propose un plan, puis <à compter> »
-
-3. Modifier `main.py` et `utils/parser.py` **via Copilot**, en lui demandant :
-
-   > «<à compter>. »
+ <à compter>
 
 **Critères de réussite**
 
@@ -82,14 +70,12 @@ Créer un logger commun utilisé par plusieurs fichiers.
 
 **Description**
 Faire analyser le projet et obtenir des suggestions d’amélioration.
+1- Expliquer l’architecture du projet en 5 points.
+2- Proposer un plan de refactor léger.
 
 **Instructions**
 
-Dans le chat, à la racine :
-
-* « Explique l’architecture du projet en 5 points. »
-* « Suis `copilot-instruction.md`. Propose un plan de refactor léger. »
-* « Applique uniquement la modification n°1 du plan. »
+ <à compter>
 
 **Critères de réussite**
 
@@ -106,15 +92,7 @@ Rendre explicite le contrat entre fichiers via docstrings + tests.
 
 **Instructions**
 
-1. Ajouter des docstrings dans `utils/parser.py`.
-
-2. Dans Copilot :
-
-   > « Suis `copilot-instruction.md`. Génère `tests/test_parser.py` avec pytest. »
-
-3. Demander :
-
-   > « Liste les fonctions publiques + pré/post-conditions. »
+ <à compter>
 
 **Critères de réussite**
 
@@ -128,14 +106,13 @@ Rendre explicite le contrat entre fichiers via docstrings + tests.
 
 **Description**
 Détecter et corriger une invention de fonction/import par Copilot.
-
-**Instructions**
-
-1. Dans `main.py`, ajouter :
-
 ```py
 # Exporter les résultats en CSV compressé
 ```
+
+**Instructions**
+
+ <à compter>
 
 **Critères de réussite**
 
@@ -150,15 +127,11 @@ Détecter et corriger une invention de fonction/import par Copilot.
 **Description**
 Détecter du code dangereux et le corriger.
 
+1- Ouvrir `danger.py`.
+
 **Instructions**
 
-1. Ouvrir `danger.py`.
-
-2. Dans Copilot :
-
-   > « Analyse les risques et propose un plan d’amélioration selon `copilot-instruction.md`. »
-
-3. Valider modifications une par une.
+<à compter>
 
 **Critères de réussite**
 
@@ -172,16 +145,16 @@ Détecter du code dangereux et le corriger.
 **Description**
 Renommer un fichier et modifier tous les imports.
 
-**Instructions**
-
-1. Renommer manuellement :
+Renommer manuellement :
 
    ```
    utils/parser.py → utils/response_parser.py
    ```
-2. Dans Copilot :
+2. Dans Copil
 
-   > « Selon `copilot-instruction.md`, <à compter> »
+**Instructions**
+
+ <à compter> 
 
 **Critères de réussite**
 
@@ -197,13 +170,16 @@ Faire une **checklist qualité** : lisibilité, logs, tests, sécurité.
 
 **Instructions**
 
-Dans le chat, à la racine :
-
-> «<à compter> »
+ «<à compter> »
 
 **Critères de réussite**
 
-* Plan priorisé.
-* ≥ 2 quick wins appliqués.
-* Projet stable & propre.
+
+* config.py : Configuration des seuils de monitoring (CPU, RAM, disk)
+* main.py : Orchestrateur principal du monitoring
+* response_parser.py : Parse les métriques système
+* danger.py : Exécute des commandes système sécurisées
+* logging_utils.py : Logs de monitoring
+* export.py : Export des rapports
+* tests/ : Tests de validation
 
